@@ -94,6 +94,22 @@ function checkSeatbeltSwitch()
 				end		
 			end
 		end,
+		["B739"] = function()	-- for Zibo 737 (supports auto mode above 10,000ft)
+			dataref("ZiboSB", "laminar/B738/toggle_switch/seatbelt_sign_pos", "readonly")
+			if ZiboSB == 2 then
+				SeatbeltMonitor = 1
+			else
+				if ZiboSB == 1 then
+				if ELEVATION >= 3048 then
+						SeatbeltMonitor = 0
+					else
+						SeatbeltMonitor = 1
+					end
+				else
+					SeatbeltMonitor = 0
+				end		
+			end
+		end,
 		["B747"] = function()	-- for Laminar 747 (supports auto mode above 10,000ft)
 			dataref("Lam747SB", "laminar/B747/safety/seat_belts/sel_dial_pos", "readonly")
 			if Lam747SB == 2 then
