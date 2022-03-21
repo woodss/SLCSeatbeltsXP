@@ -106,7 +106,7 @@ function checkSeatbeltSwitch()
 						SeatbeltMonitor = 1
 					end
 				else
-					baseSeatbeltDataRef1 = 0
+					SeatbeltMonitor = 0
 				end		
 			end
 		end,
