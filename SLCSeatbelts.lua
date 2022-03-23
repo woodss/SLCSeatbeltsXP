@@ -62,9 +62,9 @@ function checkSeatbeltSwitch()
 				SeatbeltMonitor = 0
 			end
 		end,
-		["B722"] = function()	-- for FlyJSim B727
-			dataref("fjs722SB", "FJS/727/lights/FastenBeltsSwitch", "readonly")
-			if fjs722SB == 1 then
+		["A346"] = function()	-- for Toliss A340-600
+			dataref("tolissA346", "AirbusFBW/SeatBeltSignsOn", "readonly")
+			if tolissA346 == 1 then
 				SeatbeltMonitor = 1
 			else
 				SeatbeltMonitor = 0
@@ -73,6 +73,14 @@ function checkSeatbeltSwitch()
 		["A359"] = function()	-- for FlightFactor A350
 			dataref("ffA359SB", "1-sim/12/switch", "readonly")
 			if ffA359SB == 1 then
+				SeatbeltMonitor = 1
+			else
+				SeatbeltMonitor = 0
+			end
+		end,
+		["B722"] = function()	-- for FlyJSim B727
+			dataref("fjs722SB", "FJS/727/lights/FastenBeltsSwitch", "readonly")
+			if fjs722SB == 1 then
 				SeatbeltMonitor = 1
 			else
 				SeatbeltMonitor = 0
