@@ -150,6 +150,54 @@ function checkSeatbeltSwitch()
 				end		
 			end
 		end,
+		["DH8D"] = function()	-- for FJS Q4XP 
+			dataref("Q4XPSB", "sim/cockpit/switches/fasten_seat_belts", "readonly")
+			if Q4XPSB == 1 then
+				SeatbeltMonitor = 1
+			else
+				SeatbeltMonitor = 0		
+			end
+		end,
+		["E170"] = function()	-- for SSG Embraer 170
+			dataref("E170SB", "SSG/EJET/SIGNS/fasten_belts_sw", "readonly")
+			if E170SB == 1 then
+				SeatbeltMonitor = 1
+			else
+				SeatbeltMonitor = 0		
+			end
+		end,
+		["E195"] = function()	-- for SSG Embraer 195
+			dataref("E195SB", "SSG/EJET/SIGNS/fasten_belts_sw", "readonly")
+			if E195SB == 1 then
+			SeatbeltMonitor = 1
+			else
+				SeatbeltMonitor = 0		
+			end
+		end,
+		["CONC"] = function()	-- for Colimata-Concorde
+			dataref("CONCSB", "Colimata/CON_RP_LIGHT_sw_fasten_seatblts_i", "readonly")
+			if CONCSB == 1 then
+				SeatbeltMonitor = 1
+			else
+				SeatbeltMonitor = 0		
+			end
+		end,
+		["A306"] = function()	-- for Inibuilds A306
+			dataref("A306SB", "sim/cockpit2/switches/fasten_seat_belts", "readonly")
+			if A306SB == 1 then
+				SeatbeltMonitor = 1
+			else
+				SeatbeltMonitor = 0		
+			end
+		end,
+		["A310"] = function()	-- for Inibuilds A310
+			dataref("A310SB", "sim/cockpit2/switches/fasten_seat_belts", "readonly")
+			if A10SB == 1 then
+				SeatbeltMonitor = 1
+			else
+				SeatbeltMonitor = 0		
+			end
+		end,
 	}
 	
 	local actionableAircraftResult = aircraft[PLANE_ICAO]
