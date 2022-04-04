@@ -46,6 +46,22 @@ dataref("SeatbeltMonitor", "FlyWithLua/SLCSeatbelts", "writable")
 function checkSeatbeltSwitch()
 
 	local aircraft = {
+		["A306"] = function()	-- for Inibuilds A306
+			dataref("A306SB", "sim/cockpit2/switches/fasten_seat_belts", "readonly")
+			if A306SB == 1 then
+				SeatbeltMonitor = 1
+			else
+				SeatbeltMonitor = 0		
+			end
+		end,
+		["A310"] = function()	-- for Inibuilds A310
+			dataref("A310SB", "sim/cockpit2/switches/fasten_seat_belts", "readonly")
+			if A310SB == 1 then
+				SeatbeltMonitor = 1
+			else
+				SeatbeltMonitor = 0		
+			end
+		end,
 		["A319"] = function()	-- for Toliss A319
 			dataref("tolissA319SB", "AirbusFBW/SeatBeltSignsOn", "readonly")
 			if tolissA319SB == 1 then
@@ -92,7 +108,7 @@ function checkSeatbeltSwitch()
 				SeatbeltMonitor = 1
 			else
 				if ZiboSB == 1 then
-				if ELEVATION >= 3048 then
+					if ELEVATION >= 3048 then
 						SeatbeltMonitor = 0
 					else
 						SeatbeltMonitor = 1
@@ -134,20 +150,12 @@ function checkSeatbeltSwitch()
 				end		
 			end
 		end,
-		["MD80"] = function()	-- for ROTATE MD-80 (supports auto mode above 10,000ft)
-			dataref("MD80SB", "Rotate/md80/systems/seatbelts_switch", "readonly")
-			if MD80SB == 1 then
+		["CONC"] = function()	-- for Colimata-Concorde
+			dataref("CONCSB", "Colimata/CON_RP_LIGHT_sw_fasten_seatblts_i", "readonly")
+			if CONCSB == 1 then
 				SeatbeltMonitor = 1
 			else
-				if MD80SB == -1 then
-					if ELEVATION >= 3048 then
-						SeatbeltMonitor = 0
-					else
-						SeatbeltMonitor = 1
-					end
-				else
-					SeatbeltMonitor = 0
-				end		
+				SeatbeltMonitor = 0		
 			end
 		end,
 		["DH8D"] = function()	-- for FJS Q4XP 
@@ -174,28 +182,20 @@ function checkSeatbeltSwitch()
 				SeatbeltMonitor = 0		
 			end
 		end,
-		["CONC"] = function()	-- for Colimata-Concorde
-			dataref("CONCSB", "Colimata/CON_RP_LIGHT_sw_fasten_seatblts_i", "readonly")
-			if CONCSB == 1 then
+		["MD80"] = function()	-- for ROTATE MD-80 (supports auto mode above 10,000ft)
+			dataref("MD80SB", "Rotate/md80/systems/seatbelts_switch", "readonly")
+			if MD80SB == 1 then
 				SeatbeltMonitor = 1
 			else
-				SeatbeltMonitor = 0		
-			end
-		end,
-		["A306"] = function()	-- for Inibuilds A306
-			dataref("A306SB", "sim/cockpit2/switches/fasten_seat_belts", "readonly")
-			if A306SB == 1 then
-				SeatbeltMonitor = 1
-			else
-				SeatbeltMonitor = 0		
-			end
-		end,
-		["A310"] = function()	-- for Inibuilds A310
-			dataref("A310SB", "sim/cockpit2/switches/fasten_seat_belts", "readonly")
-			if A10SB == 1 then
-				SeatbeltMonitor = 1
-			else
-				SeatbeltMonitor = 0		
+				if MD80SB == -1 then
+					if ELEVATION >= 3048 then
+						SeatbeltMonitor = 0
+					else
+						SeatbeltMonitor = 1
+					end
+				else
+					SeatbeltMonitor = 0
+				end		
 			end
 		end,
 	}
