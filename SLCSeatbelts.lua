@@ -72,7 +72,7 @@ function checkSeatbeltSwitch()
 		end,
 		["A320"] = function()	-- for Flight Factor A320 (supports auto mode above 10,000ft)
 			dataref("FFA320SB", "model/controls/light_belts", "readonly")
-			if FFA320SB == 1. then
+			if FFA320SB == 1 then
 				SeatbeltMonitor = 1
 			else
 				if FFA320SB == 0.5 then
