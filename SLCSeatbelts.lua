@@ -70,6 +70,22 @@ function checkSeatbeltSwitch()
 				SeatbeltMonitor = 0
 			end
 		end,
+		["A320"] = function()	-- for Flight Factor A320 (supports auto mode above 10,000ft)
+			dataref("FFA320SB", "model/controls/light_belts", "readonly")
+			if FFA320SB == 1. then
+				SeatbeltMonitor = 1
+			else
+				if FFA320SB == 0.5 then
+					if ELEVATION >= 3048 then
+						SeatbeltMonitor = 0
+					else
+						SeatbeltMonitor = 1
+					end
+				else
+					SeatbeltMonitor = 0
+				end		
+			end
+		end,
 		["A321"] = function()	-- for Toliss A321
 			dataref("tolissA321SB", "AirbusFBW/SeatBeltSignsOn", "readonly")
 			if tolissA321SB == 1 then
