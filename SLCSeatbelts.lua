@@ -166,6 +166,22 @@ function checkSeatbeltSwitch()
 				end		
 			end
 		end,
+		["B748"] = function()	-- for SSG Boeing 747-8 (supports auto mode above 10,000ft)
+			dataref("SSG748", "ssg/PASS/passenger_signal_sw", "readonly")
+			if SSG748 == 2 then
+				SeatbeltMonitor = 1
+			else
+				if SSG748 == 1 then
+					if ELEVATION >= 3048 then
+						SeatbeltMonitor = 0
+					else
+						SeatbeltMonitor = 1
+					end
+				else
+					SeatbeltMonitor = 0
+				end		
+			end
+		end,
 		["B788"] = function()	-- for Magknight-787-8 (supports auto mode above 10,000ft)
 			dataref("Mag788", "aero787/cockpit/overhead/switches/seatbelts", "readonly")
 			if Mag788 == 2 then
