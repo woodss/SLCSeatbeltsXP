@@ -166,6 +166,38 @@ function checkSeatbeltSwitch()
 				end		
 			end
 		end,
+		["B788"] = function()	-- for Magknight-787-8 (supports auto mode above 10,000ft)
+			dataref("Mag788", "aero787/cockpit/overhead/switches/seatbelts", "readonly")
+			if Mag788 == 2 then
+				SeatbeltMonitor = 1
+			else
+				if Mag788 == 1 then
+					if ELEVATION >= 3048 then
+						SeatbeltMonitor = 0
+					else
+						SeatbeltMonitor = 1
+					end
+				else
+					SeatbeltMonitor = 0
+				end		
+			end
+		end,
+		["B789"] = function()	-- for Magknight-787-9 (supports auto mode above 10,000ft)
+			dataref("Mag789", "aero787/cockpit/overhead/switches/seatbelts", "readonly")
+			if Mag789 == 2 then
+				SeatbeltMonitor = 1
+			else
+				if Mag789 == 1 then
+					if ELEVATION >= 3048 then
+						SeatbeltMonitor = 0
+					else
+						SeatbeltMonitor = 1
+					end
+				else
+					SeatbeltMonitor = 0
+				end		
+			end
+		end,
 		["CONC"] = function()	-- for Colimata-Concorde
 			dataref("CONCSB", "Colimata/CON_RP_LIGHT_sw_fasten_seatblts_i", "readonly")
 			if CONCSB == 1 then
