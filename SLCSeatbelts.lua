@@ -56,7 +56,7 @@ function checkSeatbeltSwitch()
 		end,
 		["A310"] = function()	-- for Inibuilds A310
 			dataref("A310SB", "sim/cockpit2/switches/fasten_seat_belts", "readonly")
-			if A310SB == 1 then
+			if A10SB == 1 then
 				SeatbeltMonitor = 1
 			else
 				SeatbeltMonitor = 0		
@@ -70,13 +70,21 @@ function checkSeatbeltSwitch()
 				SeatbeltMonitor = 0
 			end
 		end,
-		["A320"] = function()	-- for Flight Factor A320 (supports auto mode above 10,000ft)
-			dataref("FFA320SB", "model/controls/light_belts", "readonly")
-			if FFA320SB == 1 then
+		["A321"] = function()	-- for Toliss A321
+			dataref("tolissA321SB", "AirbusFBW/SeatBeltSignsOn", "readonly")
+			if tolissA321SB == 1 then
 				SeatbeltMonitor = 1
 			else
-				if FFA320SB == 0.5 then
-					if ELEVATION >= 3048 then
+				SeatbeltMonitor = 0
+			end
+		end,
+		["A333"] = function()	-- for Laminar Airbus A330
+			dataref("laminarA333", "laminar/A333/switches/fasten_seatbelts", "readonly")
+			if laminarA333 == 2 then
+				SeatbeltMonitor = 1
+			else
+				if laminarA333 == 1 then
+				if ELEVATION >= 3048 then
 						SeatbeltMonitor = 0
 					else
 						SeatbeltMonitor = 1
@@ -84,14 +92,6 @@ function checkSeatbeltSwitch()
 				else
 					SeatbeltMonitor = 0
 				end		
-			end
-		end,
-		["A321"] = function()	-- for Toliss A321
-			dataref("tolissA321SB", "AirbusFBW/SeatBeltSignsOn", "readonly")
-			if tolissA321SB == 1 then
-				SeatbeltMonitor = 1
-			else
-				SeatbeltMonitor = 0
 			end
 		end,
 		["A346"] = function()	-- for Toliss A340-600
@@ -124,7 +124,7 @@ function checkSeatbeltSwitch()
 				SeatbeltMonitor = 1
 			else
 				if ZiboSB == 1 then
-					if ELEVATION >= 3048 then
+				if ELEVATION >= 3048 then
 						SeatbeltMonitor = 0
 					else
 						SeatbeltMonitor = 1
@@ -156,54 +156,6 @@ function checkSeatbeltSwitch()
 				SeatbeltMonitor = 1
 			else
 				if Lam747SB == 1 then
-					if ELEVATION >= 3048 then
-						SeatbeltMonitor = 0
-					else
-						SeatbeltMonitor = 1
-					end
-				else
-					SeatbeltMonitor = 0
-				end		
-			end
-		end,
-		["B748"] = function()	-- for SSG Boeing 747-8 (supports auto mode above 10,000ft)
-			dataref("SSG748SB", "ssg/PASS/passenger_signal_sw", "readonly")
-			if SSG748SB == 2 then
-				SeatbeltMonitor = 1
-			else
-				if SSG748SB == 1 then
-					if ELEVATION >= 3048 then
-						SeatbeltMonitor = 0
-					else
-						SeatbeltMonitor = 1
-					end
-				else
-					SeatbeltMonitor = 0
-				end		
-			end
-		end,
-		["B788"] = function()	-- for Magknight-787-8 (supports auto mode above 10,000ft)
-			dataref("Mag788SB", "aero787/cockpit/overhead/switches/seatbelts", "readonly")
-			if Mag788SB == 2 then
-				SeatbeltMonitor = 1
-			else
-				if Mag788SB == 1 then
-					if ELEVATION >= 3048 then
-						SeatbeltMonitor = 0
-					else
-						SeatbeltMonitor = 1
-					end
-				else
-					SeatbeltMonitor = 0
-				end		
-			end
-		end,
-		["B789"] = function()	-- for Magknight-787-9 (supports auto mode above 10,000ft)
-			dataref("Mag789SB", "aero787/cockpit/overhead/switches/seatbelts", "readonly")
-			if Mag789SB == 2 then
-				SeatbeltMonitor = 1
-			else
-				if Mag789SB == 1 then
 					if ELEVATION >= 3048 then
 						SeatbeltMonitor = 0
 					else
