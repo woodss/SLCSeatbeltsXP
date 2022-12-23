@@ -56,7 +56,7 @@ function checkSeatbeltSwitch()
 		end,
 		["A310"] = function()	-- for Inibuilds A310
 			dataref("A310SB", "sim/cockpit2/switches/fasten_seat_belts", "readonly")
-			if A10SB == 1 then
+			if A310SB == 1 then
 				SeatbeltMonitor = 1
 			else
 				SeatbeltMonitor = 0		
