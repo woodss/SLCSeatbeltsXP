@@ -46,6 +46,22 @@ dataref("SeatbeltMonitor", "FlyWithLua/SLCSeatbelts", "writable")
 function checkSeatbeltSwitch()
 
 	local aircraft = {
+		["CL60"] = function()	-- HotStart Challenger 650 (thanks to M.E.)
+			dataref("CL650SB", "CL650/overhead/signs/seatbelt_value", "readonly")
+			if CL650SB == 1 then
+				SeatbeltMonitor = 1
+			else
+				if CL650SB == -1 then
+					if ELEVATION >= 3048 then
+						SeatbeltMonitor = 0
+					else
+						SeatbeltMonitor = 1
+					end
+				else
+					SeatbeltMonitor = 0
+				end		
+			end
+		end,
 		["A306"] = function()	-- for Inibuilds A306
 			dataref("A306SB", "sim/cockpit2/switches/fasten_seat_belts", "readonly")
 			if A306SB == 1 then
