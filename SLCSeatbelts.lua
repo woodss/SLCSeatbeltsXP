@@ -38,7 +38,6 @@
 
 dataref("baseSeatbeltDataRef1", "sim/cockpit/switches/fasten_seat_belts", "writeable")
 dataref("baseSeatbeltDataRef2", "sim/cockpit2/switches/fasten_seat_belts", "writeable")
-dataref("baseSeatbeltDataRef3", "sim/cockpit2/annunciators/fasten_seatbelt", "writeable")
 
 define_shared_DataRef("FlyWithLua/SLCSeatbelts", "Int")
 dataref("SeatbeltMonitor", "FlyWithLua/SLCSeatbelts", "writable")
@@ -262,7 +261,6 @@ function checkSeatbeltSwitch()
 	if baseSeatbeltDataRef1 ~= SeatbeltMonitor then
 		baseSeatbeltDataRef1 = SeatbeltMonitor
 		baseSeatbeltDataRef2 = SeatbeltMonitor
-		baseSeatbeltDataRef3 = SeatbeltMonitor
 		command_once("sim/systems/seatbelt_sign_toggle")
 	end
 	-- *******************************************************	
