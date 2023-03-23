@@ -69,6 +69,14 @@ function checkSeatbeltSwitch()
 				SeatbeltMonitor = 0
 			end
 		end,
+		["A20N"] = function()	-- for Toliss A320 NEO (A20N)
+			dataref("tolissA20NSB", "AirbusFBW/SeatBeltSignsOn", "readonly")
+			if tolissA20NSB == 1 then
+				SeatbeltMonitor = 1
+			else
+				SeatbeltMonitor = 0
+			end
+		end,
 		["A321"] = function()	-- for Toliss A321
 			dataref("tolissA321SB", "AirbusFBW/SeatBeltSignsOn", "readonly")
 			if tolissA321SB == 1 then
