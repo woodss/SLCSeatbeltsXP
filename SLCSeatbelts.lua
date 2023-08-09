@@ -237,6 +237,14 @@ function checkSeatbeltSwitch()
 				end		
 			end
 		end,
+		["T154"] = function()	-- for Masterkaya Tu-154B-2
+			dataref("T154SB", "sim/custom/switchers/ovhd/sign_belts", "readonly")
+			if T154SB == 1 then
+				SeatbeltMonitor = 1
+				else
+					SeatbeltMonitor = 0
+			end
+		end,
 	}
 	
 	local actionableAircraftResult = aircraft[PLANE_ICAO]
