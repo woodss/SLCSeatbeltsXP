@@ -237,6 +237,22 @@ function checkSeatbeltSwitch()
 				end		
 			end
 		end,
+		["MD11"] = function()	-- for ROTATE MD-80 (supports auto mode above 10,000ft)
+			dataref("MD11SB", "Rotate/md11/systems/seatbelts_switch", "readonly")
+			if MD11SB == 1 then
+				SeatbeltMonitor = 1
+			else
+				if MD11SB == -1 then
+					if ELEVATION >= 3048 then
+						SeatbeltMonitor = 0
+					else
+						SeatbeltMonitor = 1
+					end
+				else
+					SeatbeltMonitor = 0
+				end		
+			end
+		end,
 		["T154"] = function()	-- for Masterkaya Tu-154B-2
 			dataref("T154SB", "sim/custom/switchers/ovhd/sign_belts", "readonly")
 			if T154SB == 1 then
