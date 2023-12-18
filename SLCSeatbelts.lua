@@ -237,7 +237,7 @@ function checkSeatbeltSwitch()
 				end		
 			end
 		end,
-		["MD11"] = function()	-- for ROTATE MD-80 (supports auto mode above 10,000ft)
+		["MD11"] = function()	-- for ROTATE MD-11 (supports auto mode above 10,000ft)
 			dataref("MD11SB", "Rotate/md11/systems/seatbelts_switch", "readonly")
 			if MD11SB == 1 then
 				SeatbeltMonitor = 1
