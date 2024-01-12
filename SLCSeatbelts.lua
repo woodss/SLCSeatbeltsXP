@@ -238,11 +238,11 @@ function checkSeatbeltSwitch()
 			end
 		end,
 		["MD11"] = function()	-- for ROTATE MD-11 (supports auto mode above 10,000ft)
-			dataref("MD11SB", "Rotate/md11/systems/seatbelts_switch", "readonly")
-			if MD11SB == 1 then
+			dataref("MD11SB", "Rotate/aircraft/controls/seatbelts_lts", "readonly")
+			if MD11SB == 2 then
 				SeatbeltMonitor = 1
 			else
-				if MD11SB == -1 then
+				if MD11SB == 1 then
 					if ELEVATION >= 3048 then
 						SeatbeltMonitor = 0
 					else
