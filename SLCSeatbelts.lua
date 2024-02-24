@@ -173,6 +173,14 @@ function checkSeatbeltSwitch()
 				end		
 			end
 		end,
+		["B742"] = function()	-- for Felis 747-200
+			dataref("Felis742SB", "B742/OVHD/fasten_belts", "readonly")
+			if Felis742SB == 1 then
+				SeatbeltMonitor = 1
+			else
+				SeatbeltMonitor = 0	
+			end
+		end,
 		["CL60"] = function()	-- HotStart Challenger 650 (thanks to M.E.)
 			dataref("CL650SB", "CL650/overhead/signs/seatbelt_value", "readonly")
 			if CL650SB == 1 then
