@@ -16,4 +16,11 @@ Offset    0x341d    UINT8    1    rw    $SLCSeatbeltDetection 0 >
 </pre>
 
 ### That's it!! ###
-Enjoy your working seatbelt signs with SLC in your X-Plane aircraft :)
+Enjoy your working seatbelt signs with Self-Loading Cargo in your X-Plane aircraft :)
+
+### Copyright ###
+For use with Self-Loading Cargo ( www.selfloadingcargo.com )
+Copyright (C)2023 Lanilogic Technology Solutions Ltd - All Rights Reserved
+
+### Trademarks ###
+"Self Loading Cargo" is a UK registered trademark (N<sup>o</sup> UK00003962453) of Lanilogic Technology Solutions Ltd
