@@ -197,7 +197,7 @@ function checkSeatbeltSwitch()
 				end
 			end
 		end,
-		["B772"] = function()   -- for FlightFactor 777-200ERv2
+		["B772"] = function()   -- for FlightFactor 777-200ERv2 (supports auto mode above 10,000ft)
 			dataref("ff772ERv2", "1-sim/anim/seatbeltLight", "readonly")
 			if ff772ERv2 == 2 then
 				SeatbeltMonitor = 1
