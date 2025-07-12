@@ -2,10 +2,13 @@
 X-Plane cockpit seatbelt sign switch compatibility script for Self-Loading Cargo
 
 ## INSTRUCTIONS ##
-1) Copy **SLCSeatbelts.lua** into:
+
+1) Ensure FlyWithLua is installed in your X-Plane plugins folder
+
+2) Copy **SLCSeatbelts.lua** into:
 **~\YourXplaneFolder\Resources\Plugins\FlyWithLUA\Scripts**
 
-2) Copy and paste the following four lines of code to the BOTTOM of your 
+3) Copy and paste the following four lines of code to the BOTTOM of your 
 **XPUIPCOffsets.cfg** file which can be found in your **xplane/resources/plugins/xpuipc** folder.
 
 <pre>
