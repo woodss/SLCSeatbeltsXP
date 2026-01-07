@@ -41,7 +41,6 @@ dataref("baseSeatbeltDataRef2", "sim/cockpit2/switches/fasten_seat_belts", "writ
 
 define_shared_DataRef("FlyWithLua/SLCSeatbelts", "Int")
 dataref("SeatbeltMonitor", "FlyWithLua/SLCSeatbelts", "writable")
-dataref("acf_author", "sim/aircraft/view/acf_author", "readonly")
 
 function checkSeatbeltSwitch()
 
@@ -190,34 +189,20 @@ function checkSeatbeltSwitch()
 				SeatbeltMonitor = 0	
 			end
 		end,
-		["B748"] = function()  -- for SSG / FPS Boeing 747-8 (supports auto mode above 10,000ft)
-			local is_SSG_or_FPS = false
-
-			-- trim needed, because SSG has a trailing space in acf_author
-			local auth = author:gsub("^%s*(.-)%s*$", "%1")
-
-			if auth == "supercritical simulations group" then
-				dataref("B748i", "ssg/PASS/passenger_signal_sw", "readonly")
-				is_SSG_or_FPS = true
-			elseif auth == "ricardo bolognini, javier cortes, george garrido" then
-				dataref("B748i", "FPS/PASS/passenger_signal_sw", "readonly")
-				is_SSG_or_FPS = true
-			end
-
-			if not is_SSG_or_FPS then
-				return
-			end
-
-			if B748i == 2 then
+		["B748"] = function()	-- for SSG Boeing 747-8 (supports auto mode above 10,000ft)
+			dataref("SSG748", "ssg/PASS/passenger_signal_sw", "readonly")
+			if SSG748 == 2 then
 				SeatbeltMonitor = 1
-			elseif B748i == 1 then
-				if ELEVATION >= 3048 then
-					SeatbeltMonitor = 0
-				else
-					SeatbeltMonitor = 1
-				end
 			else
-				SeatbeltMonitor = 0
+				if SSG748 == 1 then
+					if ELEVATION >= 3048 then
+						SeatbeltMonitor = 0
+					else
+						SeatbeltMonitor = 1
+					end
+				else
+					SeatbeltMonitor = 0
+				end
 			end
 		end,
 		["B772"] = function()   -- for FlightFactor 777-200ERv2 (supports auto mode above 10,000ft)
